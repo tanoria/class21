@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>jQuery One</title>
+</head>
+<body>
+
+
+<div class="box box1">
+  <h2>I'm a menu.</h2>
+  <div class="box1-content">
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus temporibus iusto reiciendis alias, nobis reprehenderit, quo, labore impedit illo recusandae atque quam asperiores placeat, error dicta ipsa ex incidunt facilis!</p>
+</div>
+</div>
+<div class="box box2"></div>
+<div class="box box3"></div>
+<div class="box box4"></div>
+  
+<style>
+  .box {
+    width:200px;
+    height:200px;
+    margin:20px;
+    float:left;
+    
+  }
+  .box1 {background:red;
+        height:auto;
+  }
+    
+  .highlight-box {
+    border: 5px solid green;
+  }
+  .box2 {background:green;}
+  .box3 {background:blue;}
+  .box4 {background:yellow;}
+  
+</style>  
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+<script>
+  // Document ready start
+  $(function() {
+    // box selector 
+    $('.box').click(function() {
+      // anything we want to do once the box is clicked
+      // alert("You clicked a box!");
+    }); // end box clicked
+    $('.box1').on('click', function (){
+      console.log('clicked box 1')
+      $('.box1').toggleClass('highlight-box')
+      $(this).children('.box1-content').slideToggle();
+    })
+
+    $('.box3').hover(function() {
+      // happens on hover
+      console.log('hover on');
+    }, function () {
+      // happens off hover
+      console.log('hover off');
+    })
+  }); // end document ready
+</script>
+
+</body>
+</html>

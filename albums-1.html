@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CSS Glow Animation</title>
+
+</head>
+<body>
+  <h1>You have selected <span class="num">0</span> albums</h1>
+  <div class="albums">
+    <img src="http://d817ypd61vbww.cloudfront.net/sites/default/files/styles/tile_2_column/public/tile/image/original_599.jpg">
+    <img src="http://d817ypd61vbww.cloudfront.net/sites/default/files/styles/tile_2_column/public/tile/image/WithTheBeatles_1.jpg">
+    <img class="playing" src="http://d817ypd61vbww.cloudfront.net/sites/default/files/styles/tile_2_column/public/tile/image/AHardsDays_0.jpg">
+    <img src="http://d817ypd61vbww.cloudfront.net/sites/default/files/styles/tile_2_column/public/tile/image/BeatlesForSale_1.jpg">
+    <img src="http://d817ypd61vbww.cloudfront.net/sites/default/files/styles/tile_1_column/public/tile/image/Help_0.jpg">
+    <img src="http://d817ypd61vbww.cloudfront.net/sites/default/files/styles/tile_1_column/public/tile/image/RubberSoul_1.jpg">
+    <img src="http://d817ypd61vbww.cloudfront.net/sites/default/files/styles/tile_1_column/public/tile/image/Revolver_1.jpg">
+    <img src="http://d817ypd61vbww.cloudfront.net/sites/default/files/styles/tile_1_column/public/tile/image/Sgt-Pepper2.jpg">
+    <img src="http://d817ypd61vbww.cloudfront.net/sites/default/files/styles/tile_1_column/public/tile/image/Magical_0.jpg">
+    <img src="http://d817ypd61vbww.cloudfront.net/sites/default/files/styles/tile_1_column/public/tile/image/original_614.jpg">
+    <img src="http://d817ypd61vbww.cloudfront.net/sites/default/files/styles/tile_1_column/public/tile/image/original_602.jpg">
+    <img src="http://d817ypd61vbww.cloudfront.net/sites/default/files/styles/tile_1_column/public/tile/image/original_593.jpg">
+    <img src="http://d817ypd61vbww.cloudfront.net/sites/default/files/styles/tile_1_column/public/tile/image/LetItBe.jpg">
+  </div>
+
+  <style>
+    body {
+      text-align: center;
+      background:#EBEBEB;
+      font-family: sans-serif;
+    }
+    .albums img {
+      margin:10px;
+      padding:5px;
+      border:1px solid #ccc;
+      border-radius:3px;
+      background:white;
+      cursor:pointer; /*gives it a hand on hover */
+      -webkit-transition:all 0.4s;
+      width:200px;
+    }
+    .albums img.selected {
+      background:#797979;
+    }
+
+    .albums img.playing {
+      -webkit-animation:pulse 0.25s infinite alternate;
+    }
+
+    @-webkit-keyframes pulse {
+      0% {
+        box-shadow:0 0 10px red;
+      }
+      100% {
+        box-shadow:0 0 20px red;
+      }
+    }
+  </style>
+  <!-- must include the library directly below every time -->
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+  <script>
+  $(function() {
+      // Document is ready! All your code goes inside.
+      // You only need one of these per page
+      console.log('I am ready');
+
+      
+
+      $('img').on('click', function (){
+
+        if ($(this).hasClass('playing')) {
+          console.log('this has a class of playing')
+        } else {
+          $(this).toggleClass('selected');
+        var albumCount = $('img.selected').length
+        $('.num').text(albumCount);
+        }
+        // do nothing!
+      })
+
+      $('img').on('dblclick', function(){
+        $(this).removeClass('selected');
+        $('.playing').removeClass('playing');
+        $(this).addClass('playing');
+      })
+  }); 
+  </script>
+</body>
+</html>

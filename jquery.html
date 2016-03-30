@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+	<div class="box"></div>
+	<div class="box2"></div>
+
+	<style>
+		.box {
+			width: 200px;
+			height: 200px;
+			background: blue;
+			display: none;
+		}
+
+		.box2 {
+			width: 200px;
+			height: 200px;
+			background: red;
+		}
+	</style>
+
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+	<script>
+		$(function(){
+			$('.box2').on('click touchstart', function(){
+				$('.box').slideToggle();
+				console.log('Hello')
+			})
+
+			
+		});
+	</script>
+	
+</body>
+</html>

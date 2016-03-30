@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CSS Glow Animation</title>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+</head>
+<body>
+  <h1>You have selected <span class="num">0</span> albums</h1>
+  <div class="albums">
+    <img src="http://d817ypd61vbww.cloudfront.net/sites/default/files/styles/tile_2_column/public/tile/image/original_599.jpg">
+    <img src="http://d817ypd61vbww.cloudfront.net/sites/default/files/styles/tile_2_column/public/tile/image/WithTheBeatles_1.jpg">
+    <img class="playing" src="http://d817ypd61vbww.cloudfront.net/sites/default/files/styles/tile_2_column/public/tile/image/AHardsDays_0.jpg">
+    <img src="http://d817ypd61vbww.cloudfront.net/sites/default/files/styles/tile_2_column/public/tile/image/BeatlesForSale_1.jpg">
+    <img src="http://d817ypd61vbww.cloudfront.net/sites/default/files/styles/tile_1_column/public/tile/image/Help_0.jpg">
+    <img src="http://d817ypd61vbww.cloudfront.net/sites/default/files/styles/tile_1_column/public/tile/image/RubberSoul_1.jpg">
+    <img src="http://d817ypd61vbww.cloudfront.net/sites/default/files/styles/tile_1_column/public/tile/image/Revolver_1.jpg">
+    <img src="http://d817ypd61vbww.cloudfront.net/sites/default/files/styles/tile_1_column/public/tile/image/Sgt-Pepper2.jpg">
+    <img src="http://d817ypd61vbww.cloudfront.net/sites/default/files/styles/tile_1_column/public/tile/image/Magical_0.jpg">
+    <img src="http://d817ypd61vbww.cloudfront.net/sites/default/files/styles/tile_1_column/public/tile/image/original_614.jpg">
+    <img src="http://d817ypd61vbww.cloudfront.net/sites/default/files/styles/tile_1_column/public/tile/image/original_602.jpg">
+    <img src="http://d817ypd61vbww.cloudfront.net/sites/default/files/styles/tile_1_column/public/tile/image/original_593.jpg">
+    <img src="http://d817ypd61vbww.cloudfront.net/sites/default/files/styles/tile_1_column/public/tile/image/LetItBe.jpg">
+  </div>
+
+  <style>
+    body {
+      text-align: center;
+      background:#EBEBEB;
+      font-family: sans-serif;
+    }
+    .albums img {
+      margin:10px;
+      padding:5px;
+      border:1px solid #ccc;
+      border-radius:3px;
+      background:white;
+      cursor:pointer; /*gives it a hand on hover */
+      -webkit-transition:all 0.4s;
+      width:200px;
+      height: 200px;
+    }
+    .albums img.selected {
+      background:#797979;
+    }
+
+    .albums img.playing {
+      -webkit-animation:pulse 0.25s infinite alternate;
+    }
+
+    @-webkit-keyframes pulse {
+      0% {
+        box-shadow:0 0 10px red;
+      }
+      100% {
+        box-shadow:0 0 20px red;
+      }
+    }
+  </style>
+
+  <script>
+    $(function() {
+      // all your code goes in here
+      $('.albums img').on('dblclick',function() {
+        // disable all currently playing
+        $('.playing').removeClass('playing');
+        // add playing to the currently clicked item
+        $(this).toggleClass('playing');
+      });
+
+      $('.albums img').on('click',function() {
+        // toggle the selected class
+        $(this).toggleClass('selected');
+        // then count the number of selected albums. We will store this in a "variable" called `numOfSelected`
+        var numOfSelected = $('img.selected').length;
+        // update the count
+        $('span.num').text(numOfSelected);
+      });
+
+
+    });
+  </script>
+</body>
+</html>
